@@ -9,11 +9,30 @@
 <body>
 	
 <div id="container" style="width: 75%;">
+	<h2>Datos nivel mundial.</h2>
+	<p>Fecha de actualizacion:<span id="global-cases"></span></p>
+	<p>Casos nivel mundial:<span id="global-cases"></span></p>
+	<p>Casos del dia de hoy:<span id="global-todayCases"></span></p>
+	<p>Total de recuperados:<span id="global-recovered"></span></p>
+	<p>Total de casos activos:<span id="global-active"></span></p>
+	<p>Casos criticos:<span id="global-critical"></span></p>
+	<p>Paises afectados:<span id="global-affectedCountries"></span></p>
+
 	<canvas id="canvas"></canvas>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" type="text/javascript"></script>
 <script>
+
+fetch('https://corona.lmao.ninja/all')
+.then(function (response) {
+	return response.json();
+})
+.then(function (myJson) {
+	console.log(myJson);
+});
+
+
 	
 window.chartColors = {
 	red: 'rgb(255, 99, 132)',
