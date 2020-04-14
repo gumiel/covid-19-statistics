@@ -4,34 +4,232 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title></title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 </head>
 <body>
-	
-<div id="container" style="width: 75%;">
-	<h2>Datos nivel mundial.</h2>
-	<p>Fecha de actualizacion:<span id="global-cases"></span></p>
-	<p>Casos nivel mundial:<span id="global-cases"></span></p>
-	<p>Casos del dia de hoy:<span id="global-todayCases"></span></p>
-	<p>Total de recuperados:<span id="global-recovered"></span></p>
-	<p>Total de casos activos:<span id="global-active"></span></p>
-	<p>Casos criticos:<span id="global-critical"></span></p>
-	<p>Paises afectados:<span id="global-affectedCountries"></span></p>
 
-	<canvas id="canvas"></canvas>
-</div>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+		<a class="navbar-brand" href="#">Estadistica</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">Dropdown</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+	<main role="main" style="margin-top: 56px;">
+	
+		<div class="container">
+			<!-- Example row of columns -->
+			<div class="row">
+				<div class="col-md-6">
+					<div id="container" .>
+						<h2>Datos nivel mundial.</h2>
+						<p>Fecha de actualizacion: <span id="global-updated"></span></p>
+						<p>Casos nivel mundial: <b><span id="global-cases" style="color:#36a2eb"></span></b></p>
+						<p>Total de recuperados: <b><span id="global-recovered" style="color:#ffcd56"></span></b></p>
+						<p>Total de fallecidos: <b><span id="global-deaths" style="color:#ff6384"></span></b></p>
+						<p>Casos del dia de hoy: <span id="global-todayCases"></span></p>
+						<p>Total de casos activos: <span id="global-active"></span></p>
+						<p>Casos criticos: <span id="global-critical"></span></p>
+						<p>Paises afectados: <span id="global-affectedCountries"></span></p>
+					
+						
+					
+						<canvas id="canvas"></canvas>
+					</div>
+				</div>
+				<div class="col-md-6">
+						<h2>Estatistica nivel mundial</h2>
+					<canvas id="global-statistics-pie"></canvas>
+				</div>
+				<div class="col-md-4">
+					<h2>Heading</h2>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
+						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
+						mollis euismod. Donec sed odio dui. </p>
+					<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-md-4">
+					<h2>Heading</h2>
+					<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
+						mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
+						mollis euismod. Donec sed odio dui. </p>
+					<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+				</div>
+				<div class="col-md-4">
+					<h2>Heading</h2>
+					<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+						porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+						ut fermentum massa justo sit amet risus.</p>
+					<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+				</div>
+			</div>
+	
+			<hr>
+	
+		</div> <!-- /container -->
+	
+	</main>
+	
+	<footer class="container">
+		<p>&copy; Company 2017-2019</p>
+	</footer>
+	
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" type="text/javascript"></script>
 <script>
+
+
+
+window.onload = function () {
+
+}
+
+var global_data ={
+	cases: 0,
+	recovered: 0,
+	deaths: 0,
+}
+
+
+
+
 
 fetch('https://corona.lmao.ninja/all')
 .then(function (response) {
 	return response.json();
 })
 .then(function (myJson) {
+
+	global_data = {
+		cases: myJson.cases,
+		recovered: myJson.recovered,
+		deaths: myJson.deaths,
+	}
+	
+	document.getElementById("global-updated").innerHTML = new Date(myJson.updated);
+	document.getElementById("global-cases").innerHTML = myJson.cases;
+	document.getElementById("global-todayCases").innerHTML = myJson.todayCases;
+	document.getElementById("global-recovered").innerHTML = myJson.recovered;
+	document.getElementById("global-deaths").innerHTML = myJson.deaths;
+	document.getElementById("global-active").innerHTML = myJson.active;
+	document.getElementById("global-critical").innerHTML = myJson.critical;
+	document.getElementById("global-affectedCountries").innerHTML = myJson.affectedCountries;
 	console.log(myJson);
+
+	generarGlobalStatisticsPie(global_data);
+
+	
 });
 
+	
+
+	function generarGlobalStatisticsPie(global_data)
+	{
+
+
+		var randomScalingFactor = function () {
+			return Math.round(Math.random() * 100);
+		};
+
+
+
+		var config = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [
+						global_data.cases,
+						global_data.recovered,
+						global_data.deaths,
+					],
+					backgroundColor: [
+						window.chartColors.blue,
+						window.chartColors.yellow,
+						window.chartColors.red,
+					],
+					label: 'Global'
+				}],
+				labels: [
+					'Casos '+ global_data.cases,
+					'Recuperados '+ global_data.recovered,
+					'Fallecidos '+ global_data.deaths,
+				]
+			},
+			options: {
+				responsive: true
+			}
+		};
+
+		
+			var ctx = document.getElementById('global-statistics-pie').getContext('2d');
+			window.myPie = new Chart(ctx, config);
+		
+
+		document.getElementById('randomizeData').addEventListener('click', function () {
+			config.data.datasets.forEach(function (dataset) {
+				dataset.data = dataset.data.map(function () {
+					return randomScalingFactor();
+				});
+			});
+
+			window.myPie.update();
+		});
+
+		var colorNames = Object.keys(window.chartColors);
+		document.getElementById('addDataset').addEventListener('click', function () {
+			var newDataset = {
+				backgroundColor: [],
+				data: [],
+				label: 'New dataset ' + config.data.datasets.length,
+			};
+
+			for (var index = 0; index < config.data.labels.length; ++index) {
+				newDataset.data.push(randomScalingFactor());
+
+				var colorName = colorNames[index % colorNames.length];
+				var newColor = window.chartColors[colorName];
+				newDataset.backgroundColor.push(newColor);
+			}
+
+			config.data.datasets.push(newDataset);
+			window.myPie.update();
+		});
+
+		document.getElementById('removeDataset').addEventListener('click', function () {
+			config.data.datasets.splice(0, 1);
+			window.myPie.update();
+		});
+
+	}
+
+	
+	console.log('***************');
+	console.log(global_data);
 
 	
 window.chartColors = {
@@ -302,6 +500,21 @@ window.chartColors = {
 		window.myHorizontalBar.update();
 	});
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>
