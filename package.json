@@ -1,5 +1,5 @@
 {
-  "homepage": "https://gumiel.github.io/covid-19-statistics",
+  "homepage": "https://gumiel.github.io/covid-19-statistics/",
   "name": "covid-19-statistics",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +14,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-multi-select-component": "^2.0.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {

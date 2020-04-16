@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav, Button, Dropdown, Form, Collapse, Container } from 'bootstrap-4-react';
 import './App.css';
 import GlobalArea from "./GlobalArea";
+import SpecificArea from "./SpecificArea";
 
 
 function App() {
@@ -43,8 +44,12 @@ function App() {
           </Form>
         </Collapse>
       </Navbar>
+
       <Container>
+        
         <GlobalArea></GlobalArea>
+        
+        <SpecificArea></SpecificArea>
 
       </Container>
       
