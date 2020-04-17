@@ -24,15 +24,64 @@ class GlobalArea extends Component{
           tests: 0,
           testsPerOneMillion: 0,
           affectedCountries: 0,
-        }
+        };
         
     }
 
     componentDidMount() {
       
-      Axios.get("https://corona.lmao.ninja/all").then(res => {
+      Axios.get("https://corona.lmao.ninja/v2/continents").then(res => {
 
-        this.setState(res.data);      
+             
+        console.log(res.data);
+
+        var updated= 0;
+        var cases= 0;
+        var todayCases= 0;
+        var deaths= 0;
+        var todayDeaths= 0;
+        var recovered= 0;
+        var active= 0;
+        var critical= 0;
+        var casesPerOneMillion= 0;
+        var deathsPerOneMillion= 0;
+        var tests= 0;
+        var testsPerOneMillion= 0;
+        var affectedCountries= 0;
+
+        res.data.forEach(element => {
+          updated = element.updated;
+          cases= cases+element.cases;
+          todayCases= todayCases+element.todayCases;
+          deaths= deaths+element.deaths;
+          todayDeaths= todayDeaths+element.todayDeaths;
+          recovered= recovered+element.recovered;
+          active= active+element.active;
+          critical= critical+element.critical;
+          casesPerOneMillion= casesPerOneMillion+element.casesPerOneMillion;
+          deathsPerOneMillion= deathsPerOneMillion+element.deathsPerOneMillion;
+          tests= tests+element.tests;
+          testsPerOneMillion= testsPerOneMillion+element.testsPerOneMillion;
+          affectedCountries= affectedCountries+element.affectedCountries;
+
+        }); 
+        
+        this.setState({
+          'updated': updated,
+          'cases': cases,
+          'todayCases': todayCases,
+          'deaths': deaths,
+          'todayDeaths': todayDeaths,
+          'recovered': recovered,
+          'active': active,
+          'critical': critical,
+          'casesPerOneMillion': casesPerOneMillion,
+          'deathsPerOneMillion': deathsPerOneMillion,
+          'tests': tests,
+          'testsPerOneMillion': testsPerOneMillion,
+          'affectedCountries': affectedCountries,
+        });
+        
       });
     }
 
@@ -53,10 +102,11 @@ class GlobalArea extends Component{
                 <p>Casos criticos: {this.state.critical}</p>
                 <p>Paises afectados: {this.state.affectedCountries}</p>
               </Col>
-              <Col>
+              <Col>asdasd
                     <GlobalAreaPie globalData={this.state} />
                     {/* <LineGraph></LineGraph> */}            
               </Col>
+              <Col>asdasd</Col>
             </Row>
         );
     }
