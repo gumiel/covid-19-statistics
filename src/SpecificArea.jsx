@@ -28,12 +28,12 @@ const SpecificArea = function(){
     "updated": 1587044800696,
     "country": "",
     "countryInfo": {
-    "_id": 0,
-    "iso2": "",
-    "iso3": "",
-    "lat": 0,
-    "long": 0,
-    "flag": ""
+      "_id": 0,
+      "iso2": "",
+      "iso3": "",
+      "lat": 0,
+      "long": 0,
+      "flag": ""
     },
     "cases": 0,
     "todayCases": 0,
@@ -52,29 +52,39 @@ const SpecificArea = function(){
     Axios.get("https://corona.lmao.ninja/v2/countries/BOL").then(res => {
       console.log(res.data);
       setMyData(res.data);
-
-      var MONTHS = ['Bolivia'];
+      
+      var MONTHS = ['Casos nacionales', 'fallecidos', 'recuperados'];
       var color = Chart.helpers.color;
 
       var horizontalBarChartData = {
-        labels: ['Bolivia'],
-        datasets: [{
-          label: 'Dataset 1',
-          backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
-          borderColor: window.chartColors.red,
-          borderWidth: 1,
-          data: [
-            150,
-          ]
-        }, {
-          label: 'Dataset 2',
-          backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
-          borderColor: window.chartColors.blue,
-          data: [
-            500,
-          ]
-        }]
-  
+        labels: ["Casos nacionales", "fallecidos", "recuperados"],
+        datasets: [
+          {
+            label: "Casos encontrados",
+            backgroundColor: color(window.chartColors.red)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: window.chartColors.red,
+            // borderWidth: 1,
+            data: [0],
+          },
+          {
+            label: "Fallecidos",
+            backgroundColor: color(window.chartColors.blue)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: window.chartColors.blue,
+            data: [300],
+          },
+          {
+            label: "Recuperados",
+            backgroundColor: color(window.chartColors.purple)
+              .alpha(0.5)
+              .rgbString(),
+            borderColor: window.chartColors.purple,
+            data: [500],
+          },
+        ],
       };
 
       const myChartRef2 = dataBarra.chartRef2.current.getContext("2d");
@@ -114,7 +124,7 @@ const SpecificArea = function(){
           <Col>
             <h2>Datos en Bolivia.</h2>
             <p>Fecha de actualizacion: {myData.updated}</p>
-            <p>Casos nivel mundial: <b>{myData.cases}</b></p>
+            <p>Casos a nivel nacional: <b>{myData.cases}</b></p>
             <p>Total de recuperados: <b>{myData.recovered}</b></p>
             <p>Total de fallecidos: <b>{myData.deaths}</b></p>
             <p>Casos del dia de hoy: {myData.todayCases}</p>

@@ -5,7 +5,10 @@ Estadisticas del covid
 
 - git clone https://github.com/gumiel/covid-19-statistics.git
 - cd covid-19-statistics
-- 
+- npm install
+- yarn start
+
+
 
 ## Librerias
 
