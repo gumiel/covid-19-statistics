@@ -3,6 +3,7 @@ import { Navbar, Nav, Button, Dropdown, Form, Collapse, Container } from 'bootst
 import './App.css';
 import GlobalArea from "./GlobalArea";
 import SpecificArea from "./SpecificArea";
+import Timeline from "./Timeline";
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
         
         <SpecificArea></SpecificArea>
 
-        
+        <Timeline></Timeline>
 
       </Container>
       
