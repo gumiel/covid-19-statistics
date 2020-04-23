@@ -11,9 +11,11 @@
     "bootstrap": "^4.4.1",
     "bootstrap-4-react": "0.0.59",
     "chart.js": "^2.9.3",
+    "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-moment": "^0.9.7",
     "react-multi-select-component": "^2.0.1",
     "react-scripts": "3.4.1"
   },
