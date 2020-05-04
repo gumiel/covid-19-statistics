@@ -4,6 +4,7 @@ import './App.css';
 import GlobalArea from "./GlobalArea";
 import SpecificArea from "./SpecificArea";
 import Timeline from "./Timeline";
+import TimelineSelect from "./TimelineSelect";
 
 
 function App() {
@@ -48,11 +49,14 @@ function App() {
 
       <Container>
         
+        <TimelineSelect></TimelineSelect>
+        
         <GlobalArea></GlobalArea>
         
         <SpecificArea></SpecificArea>
 
         <Timeline></Timeline>
+
 
       </Container>
       

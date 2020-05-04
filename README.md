@@ -39,3 +39,5 @@ https://github.com/novelcovid/api
 https://corona.lmao.ninja/docs/
 https://corona.lmao.ninja/v2/countries/BOL
 
+https://restcountries.eu/#api-endpoints-all
+
