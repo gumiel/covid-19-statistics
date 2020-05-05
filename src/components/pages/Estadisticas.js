@@ -14,11 +14,12 @@ const Estadistica = function(){
     return (
       <Container>
         
-        <AreaMultiplesPaises></AreaMultiplesPaises>
-        
         <AreaGlobal></AreaGlobal>
-
+        
         <AreaBolivia></AreaBolivia>
+        
+        <AreaMultiplesPaises></AreaMultiplesPaises>
+
 
       </Container>
     );

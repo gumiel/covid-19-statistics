@@ -29,8 +29,6 @@ const Timeline = function(){
 
         Axios.get("https://corona.lmao.ninja/v2/historical/BOL?lastdays=30").then(res=>{ 
 
-            console.log('*****');
-            console.log(res.data);
              
 
             const myChartRef3 = dataChart.chartRef3.current.getContext("2d");
@@ -47,7 +45,6 @@ const Timeline = function(){
             let arregloDatosMuertes = Object.values(res.data.timeline.deaths);
             let arregloDatosRecuperaciones = Object.values(res.data.timeline.recovered);
 
-            console.log(arregloFechaCasos);
             
             var config = {
                 type: 'line',
@@ -106,7 +103,7 @@ const Timeline = function(){
 
     return (
         <Row>
-            <Col>
+            <Col col="md-12">
                 <Card>
                     <Card.Body>
                         <h5>Linea de tiempo de {dataTimeline.country}</h5>

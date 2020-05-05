@@ -96,9 +96,13 @@ const AreaMultiplesPaises = ()=>{
 
     return (
         <>  
-            <Row>
+            <Row my="md-3">
+              <Col col="md-12" text="center">
+                <h2>Seleccione el pais</h2>
+              </Col>
+            </Row>
+            <Row my="md-3">
                 <Col>
-                    <h2>Seleccione el pais</h2>   
                     
                     <select defaultValue={'DEFAULT'}  className="form-control" id="exampleFormControlSelect2" onChange={(e) => { cambiandoPais(e) }}> 
                         <option value="DEFAULT" disabled>Seleccione</option>
@@ -111,20 +115,20 @@ const AreaMultiplesPaises = ()=>{
                 </Col>
             </Row>
             <Row my="md-3">
-                <Col col="4 md">
+                <Col col="md-4">
                     <InfoCard
                     paisSeleccionado={paisSeleccionado}
                     ></InfoCard>
                 </Col>
                 
-                <Col col="8 md">
+                <Col col="md-8">
                     <PieCard
                         paisSeleccionado={paisSeleccionado} 
                     ></PieCard>
                 </Col>
             </Row>
-            <Row>
-                <Col col="12 md">
+            <Row my="md-3">
+                <Col col="md-12">
                     <TimelineCard
                         nombrePais={paisSeleccionado.country}
                         alpha3Code={paisSeleccionado.alpha3Code}

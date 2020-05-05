@@ -51,7 +51,7 @@ const SpecificArea = function(){
 
   useEffect(()=>{
     Axios.get("https://corona.lmao.ninja/v2/countries/BOL").then(res => {
-      console.log(res.data);
+
       setMyData(res.data);
       
       
@@ -81,28 +81,14 @@ const SpecificArea = function(){
   
   return (
       <>
-        <Row>
-        <Col text="center">
-          <h2>Datos en Bolivia.</h2>
-        </Col>
-        </Row>
-        <Row>
-          <Col>
-          <Card>
-            <Card.Body>
-              {/* <Card.Text> */}
-                <p>Casos a nivel nacional: <b>{myData.cases}</b></p>
-                <p>Total de recuperados: <b>{myData.recovered}</b></p>
-                <p>Total de fallecidos: <b>{myData.deaths}</b></p>
-                <p>Casos del dia de hoy: {myData.todayCases}</p>
-                <p>Total de casos activos: {myData.active}</p>
-                <p>Casos criticos: {myData.critical}</p>
-              {/* </Card.Text> */}
-            </Card.Body>
-          </Card>
-            
+        <Row my="md-3">
+          <Col col="md-12" text="center">
+            <h2>Datos en Bolivia.</h2>
           </Col>
-          <Col>
+        </Row>
+        <Row my="md-3">
+          
+          <Col col="md-8">
             <Card>
               <Card.Body>
                 {/* <Card.Text> */}
@@ -119,6 +105,21 @@ const SpecificArea = function(){
               </Card.Body>
             </Card>
 
+          </Col>
+          <Col col="md-4">
+          <Card>
+            <Card.Body>
+              {/* <Card.Text> */}
+                <p>Casos a nivel nacional: <b>{myData.cases}</b></p>
+                <p>Total de recuperados: <b>{myData.recovered}</b></p>
+                <p>Total de fallecidos: <b>{myData.deaths}</b></p>
+                <p>Casos del dia de hoy: {myData.todayCases}</p>
+                <p>Total de casos activos: {myData.active}</p>
+                <p>Casos criticos: {myData.critical}</p>
+              {/* </Card.Text> */}
+            </Card.Body>
+          </Card>
+            
           </Col>
         </Row>
       </>

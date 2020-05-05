@@ -5,7 +5,7 @@ import Chart from "chart.js";
 
 export const TimelineCard = ({ nombrePais, alpha3Code}) => {
 
-    let ctx = document.getElementById("myChart3");
+    let ctx = document.getElementById("myChart5");
     let chart = null;
 
     const [dataTimeline, setDataTimeline] = useState({
@@ -117,7 +117,7 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
             <Card.Body>
                 <h5>Linea de tiempo de {nombrePais}</h5>
                 <div>
-                    <canvas id="myChart3" />
+                    <canvas id="myChart5" />
                 </div>
             </Card.Body>
         </Card>

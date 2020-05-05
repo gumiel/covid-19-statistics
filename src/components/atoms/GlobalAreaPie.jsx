@@ -13,7 +13,7 @@ class GlobalAreaPie extends Component{
   
   componentDidMount() {
     
-    // console.log(this.props);
+
     
   }
     

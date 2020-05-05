@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'bootstrap-4-react';
+import { Row, Col, Card } from 'bootstrap-4-react';
 import Axios from 'axios';
-
 import Moment from "react-moment";
 import GlobalAreaPie from '../atoms/GlobalAreaPie';
 
@@ -35,7 +34,6 @@ class AreaGlobal extends Component{
       Axios.get("https://corona.lmao.ninja/v2/continents").then(res => {
 
              
-        console.log(res.data);
 
         var updated= 0;
         var cases= 0;
@@ -92,23 +90,39 @@ class AreaGlobal extends Component{
     render(){
 
         return(
-            <Row>
-              <Col>
-                <h2>Datos nivel mundial.</h2>
-                <p>Fecha de actualizacion: <Moment format="DD/MM/YYYY">{this.state.updated}</Moment></p>
-                <p>Casos nivel mundial: <b>{this.state.cases}</b></p>
-                <p>Total de recuperados: <b>{this.state.recovered}</b></p>
-                <p>Total de fallecidos: <b>{this.state.deaths}</b></p>
-                <p>Casos del dia de hoy: {this.state.todayCases}</p>
-                <p>Total de casos activos: {this.state.active}</p>
-                <p>Casos criticos: {this.state.critical}</p>
-                {/* <p>Paises afectados: {this.state.affectedCountries}</p> */}
-              </Col>
-              <Col>
-                    <GlobalAreaPie globalData={this.state} />
-                    {/* <LineGraph></LineGraph> */}            
+          <>
+            <Row my="md-3">
+              <Col text="center">
+                <h2>Datos Globales.</h2>
               </Col>
             </Row>
+
+            <Row my="md-3">
+              <Col col="md-4">
+                <Card>
+                    <Card.Body>
+                    <h2>Datos nivel mundial.</h2>
+                    <p>Fecha de actualizacion: <Moment format="DD/MM/YYYY">{this.state.updated}</Moment></p>
+                    <p>Casos nivel mundial: <b>{this.state.cases}</b></p>
+                    <p>Total de recuperados: <b>{this.state.recovered}</b></p>
+                    <p>Total de fallecidos: <b>{this.state.deaths}</b></p>
+                    <p>Casos del dia de hoy: {this.state.todayCases}</p>
+                    <p>Total de casos activos: {this.state.active}</p>
+                    <p>Casos criticos: {this.state.critical}</p>
+                    </Card.Body>
+                </Card>
+              
+              </Col>
+              <Col col="md-8">
+                <Card>
+                  <Card.Body>
+                    <GlobalAreaPie globalData={this.state} />
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+
+          </>
         );
     }
 
