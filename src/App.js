@@ -1,10 +1,6 @@
 import React from "react";
-import { Navbar, Nav, Button, Dropdown, Form, Collapse, Container } from 'bootstrap-4-react';
-import './App.css';
-import GlobalArea from "./GlobalArea";
-import SpecificArea from "./SpecificArea";
-import Timeline from "./Timeline";
-import TimelineSelect from "./TimelineSelect";
+import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
+import Estadistica from "./components/pages/Estadisticas";
 
 
 function App() {
@@ -47,18 +43,9 @@ function App() {
         </Collapse>
       </Navbar>
 
-      <Container>
-        
-        <TimelineSelect></TimelineSelect>
-        
-        <GlobalArea></GlobalArea>
-        
-        <SpecificArea></SpecificArea>
+      <Estadistica></Estadistica>
 
-        <Timeline></Timeline>
-
-
-      </Container>
+      
       
 
     </>

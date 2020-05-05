@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'bootstrap-4-react';
 import Axios from 'axios';
-import GlobalAreaPie from './GlobalAreaPie';
+
 import Moment from "react-moment";
+import GlobalAreaPie from '../atoms/GlobalAreaPie';
 
 
 
-class GlobalArea extends Component{
+class AreaGlobal extends Component{
 
     constructor(prop){
         super(prop);
@@ -112,4 +113,4 @@ class GlobalArea extends Component{
     }
 
 }
-export default GlobalArea;
+export default AreaGlobal;

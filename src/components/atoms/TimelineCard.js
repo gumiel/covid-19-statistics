@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Card } from 'bootstrap-4-react';
+import { Card } from 'bootstrap-4-react';
 import Axios from 'axios';
 import Chart from "chart.js";
 
 export const TimelineCard = ({ nombrePais, alpha3Code}) => {
 
+    let ctx = document.getElementById("myChart3");
+    let chart = null;
 
     const [dataTimeline, setDataTimeline] = useState({
         "country": "",
@@ -19,9 +21,6 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
         }
     });
 
-    const [dataChart, setDataChart] = useState({
-        chartRef3: React.createRef()
-    });
 
     useEffect(() => {
 
@@ -31,11 +30,10 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
         
             Axios.get(`https://corona.lmao.ninja/v2/historical/${alpha3Code}?lastdays=30`).then(res => {
 
-                console.log('*****');
-                console.log(res.data);
 
 
-                const myChartRef3 = dataChart.chartRef3.current.getContext("2d");
+
+                
 
 
                 let arregloFechaCasos = Object.keys(res.data.timeline.cases);
@@ -49,7 +47,7 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
                 let arregloDatosMuertes = Object.values(res.data.timeline.deaths);
                 let arregloDatosRecuperaciones = Object.values(res.data.timeline.recovered);
 
-                console.log(arregloFechaCasos);
+                
 
                 var config = {
                     type: 'line',
@@ -97,14 +95,14 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
                     }
                 };
 
-
-
-                new Chart(myChartRef3, config);
+                
+                
+                chart = new Chart(ctx, config);
 
 
             });
-        }else{
-            // alert("else");
+        }else if(nombrePais==''){
+
         }
 
     });
@@ -118,9 +116,8 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
         <Card>
             <Card.Body>
                 <h5>Linea de tiempo de {nombrePais}</h5>
-                <h5>Linea de tiempo de {alpha3Code}</h5>
                 <div>
-                    <canvas id="myChart3" ref={dataChart.chartRef3} />
+                    <canvas id="myChart3" />
                 </div>
             </Card.Body>
         </Card>

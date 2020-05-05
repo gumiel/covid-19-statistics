@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Row, Col, Card} from 'bootstrap-4-react';
+import {Row, Col, Card, BH5} from 'bootstrap-4-react';
 import Axios from 'axios';
 import Chart from "chart.js";
 import Moment from "react-moment";
@@ -90,14 +90,14 @@ const SpecificArea = function(){
           <Col>
           <Card>
             <Card.Body>
-              <Card.Text>
+              {/* <Card.Text> */}
                 <p>Casos a nivel nacional: <b>{myData.cases}</b></p>
                 <p>Total de recuperados: <b>{myData.recovered}</b></p>
                 <p>Total de fallecidos: <b>{myData.deaths}</b></p>
                 <p>Casos del dia de hoy: {myData.todayCases}</p>
                 <p>Total de casos activos: {myData.active}</p>
                 <p>Casos criticos: {myData.critical}</p>
-              </Card.Text>
+              {/* </Card.Text> */}
             </Card.Body>
           </Card>
             
@@ -105,8 +105,8 @@ const SpecificArea = function(){
           <Col>
             <Card>
               <Card.Body>
-                <Card.Text>
-                  <h5>Cuadro de la fecha <Moment format="DD/MM/YYYY">{myData.updated}</Moment></h5>
+                {/* <Card.Text> */}
+                  <BH5>Cuadro de la fecha <Moment format="DD/MM/YYYY">{myData.updated}</Moment> </BH5>
                       {/* <pre>{JSON.stringify(selected)}</pre>
                       <MultiSelect
                           options={options}
@@ -115,7 +115,7 @@ const SpecificArea = function(){
                           labelledBy={"Select"}
                       /> */}
                   <canvas id="myChart2" ref={dataBarra.chartRef2} />
-                </Card.Text>
+                {/* </Card.Text> */}
               </Card.Body>
             </Card>
 
