@@ -6,14 +6,11 @@ class GlobalAreaPie extends Component{
   
   constructor(props){
       super(props);
-
   }
     
   chartRef = React.createRef();
   
   componentDidMount() {
-    
-
     
   }
     
@@ -30,7 +27,6 @@ class GlobalAreaPie extends Component{
   componentDidUpdate(){
 
     const config = this.dibujar(this.props.globalData);
-    
     const myChartRef = this.chartRef.current.getContext("2d");
     new Chart(myChartRef, config);
 
@@ -39,8 +35,6 @@ class GlobalAreaPie extends Component{
   dibujar(data){
     
     const global_data = data;
-
-    
 
     const config = {
       type: 'pie',

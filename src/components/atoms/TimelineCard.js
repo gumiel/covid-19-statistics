@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Card } from 'bootstrap-4-react';
 import Axios from 'axios';
 import Chart from "chart.js";
@@ -6,25 +6,14 @@ import Chart from "chart.js";
 export const TimelineCard = ({ nombrePais, alpha3Code}) => {
 
     let ctx = document.getElementById("myChart5");
-    let chart = null;
 
-    const [dataTimeline, setDataTimeline] = useState({
-        "country": "",
-        "provinces": [],
-        "timeline": {
-            "cases": {
-            },
-            "deaths": {
-            },
-            "recovered": {
-            }
-        }
-    });
+
+    
 
 
     useEffect(() => {
 
-        if (alpha3Code!=''){
+        if (alpha3Code!==''){
 
             // alert(alpha3Code);
         
@@ -97,11 +86,11 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
 
                 
                 
-                chart = new Chart(ctx, config);
+                new Chart(ctx, config);
 
 
             });
-        }else if(nombrePais==''){
+        }else if(nombrePais===''){
 
         }
 

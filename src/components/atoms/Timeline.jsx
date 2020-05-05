@@ -1,39 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col, Card } from 'bootstrap-4-react';
 import Axios from 'axios';
 import Chart from "chart.js";
 
 const Timeline = function(){
 
-    
-    const [dataTimeline, setDataTimeline] = useState({
-        "country": "",
-        "provinces": [],
-        "timeline": {
-            "cases": {
-        },
-        "deaths": {
-        },
-        "recovered": {
-        }
-        }
-    });
-
-  
-
-    const [dataChart, setDataChart] = useState({
-        chartRef3: React.createRef()
-    });
-
     useEffect(()=>{  
 
         Axios.get("https://corona.lmao.ninja/v2/historical/BOL?lastdays=30").then(res=>{ 
 
-             
 
-            const myChartRef3 = dataChart.chartRef3.current.getContext("2d");
-            
-            
             let arregloFechaCasos = Object.keys(res.data.timeline.cases);
             arregloFechaCasos = arregloFechaCasos.map(function(d) {
                 let arrayD = d.split('/');
@@ -92,9 +68,9 @@ const Timeline = function(){
                 }
             };
             
+            let ctx = document.getElementById("myChart31");
             
-            
-            new Chart(myChartRef3, config);
+            new Chart(ctx, config);
         
         
         });
@@ -106,9 +82,9 @@ const Timeline = function(){
             <Col col="md-12">
                 <Card>
                     <Card.Body>
-                        <h5>Linea de tiempo de {dataTimeline.country}</h5>
+                        <h5>Linea de tiempo de Bolivia</h5>
                         <div>
-                            <canvas id="myChart3" ref={dataChart.chartRef3} />
+                            <canvas id="myChart31" />
                         </div>
                     </Card.Body>
                 </Card>
