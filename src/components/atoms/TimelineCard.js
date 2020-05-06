@@ -24,7 +24,7 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
 
     useEffect(() => {
 
-        if (alpha3Code!=''){
+        if (alpha3Code!==''){
 
             // alert(alpha3Code);
         
@@ -100,7 +100,10 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
                 chart = new Chart(ctx, config);
 
 
+            }).catch(error => {
+                console.log(error.response)
             });
+            
         }else if(nombrePais==''){
 
         }
@@ -115,7 +118,7 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
     return (
         <Card>
             <Card.Body>
-                <h5>Linea de tiempo de {nombrePais}</h5>
+                <h5>Linea de tiempo de <b>{nombrePais}</b></h5>
                 <div>
                     <canvas id="myChart5" />
                 </div>

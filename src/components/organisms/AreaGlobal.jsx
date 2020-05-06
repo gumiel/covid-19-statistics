@@ -114,11 +114,7 @@ class AreaGlobal extends Component{
               
               </Col>
               <Col col="md-8">
-                <Card>
-                  <Card.Body>
                     <GlobalAreaPie globalData={this.state} />
-                  </Card.Body>
-                </Card>
               </Col>
             </Row>
 

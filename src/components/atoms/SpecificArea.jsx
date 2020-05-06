@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {Row, Col, Card, BH5} from 'bootstrap-4-react';
+import {Row, Col, Card, BH5, BH4} from 'bootstrap-4-react';
 import Axios from 'axios';
 import Chart from "chart.js";
 import Moment from "react-moment";
-// import MultiSelect from "react-multi-select-component";
+import InfoCard from './InfoCard';
 
 
 
@@ -13,14 +13,6 @@ import Moment from "react-moment";
 const SpecificArea = function(){
 
   
-  // const options = [
-  //     { label: "Grapes 🍇", value: "grapes" },
-  //     { label: "Mango 🥭", value: "mango" },
-  //     { label: "Strawberry 🍓", value: "strawberry" },
-  // ];
-
-  // const [selected, setSelected] = useState([]);
-
   const [dataBarra, setDataBarra] = useState({
     chartRef2 : React.createRef()
   });
@@ -89,38 +81,22 @@ const SpecificArea = function(){
         <Row my="md-3">
           
           <Col col="md-8">
+            
             <Card>
               <Card.Body>
-                {/* <Card.Text> */}
                   <BH5>Cuadro de la fecha <Moment format="DD/MM/YYYY">{myData.updated}</Moment> </BH5>
-                      {/* <pre>{JSON.stringify(selected)}</pre>
-                      <MultiSelect
-                          options={options}
-                          value={selected}
-                          onChange={setSelected}
-                          labelledBy={"Select"}
-                      /> */}
                   <canvas id="myChart2" ref={dataBarra.chartRef2} />
-                {/* </Card.Text> */}
               </Card.Body>
             </Card>
 
           </Col>
+
           <Col col="md-4">
-          <Card>
-            <Card.Body>
-              {/* <Card.Text> */}
-                <p>Casos a nivel nacional: <b>{myData.cases}</b></p>
-                <p>Total de recuperados: <b>{myData.recovered}</b></p>
-                <p>Total de fallecidos: <b>{myData.deaths}</b></p>
-                <p>Casos del dia de hoy: {myData.todayCases}</p>
-                <p>Total de casos activos: {myData.active}</p>
-                <p>Casos criticos: {myData.critical}</p>
-              {/* </Card.Text> */}
-            </Card.Body>
-          </Card>
-            
+            <InfoCard
+              paisSeleccionado={myData}
+            />
           </Col>
+
         </Row>
       </>
   );

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Chart from "chart.js";
+import { Card } from 'bootstrap-4-react';
 
 
 class GlobalAreaPie extends Component{
@@ -20,9 +21,13 @@ class GlobalAreaPie extends Component{
   render() {
 
     return (
-      <> 
-        <canvas id="myChart" ref={this.chartRef} />
-      </>
+      <Card>
+          <Card.Body>
+              <div>
+                  <canvas id="myChart" ref={this.chartRef}/>
+              </div>
+          </Card.Body>
+      </Card>
     );
 
   }

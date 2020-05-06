@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'bootstrap-4-react';
 import Axios from 'axios';
-import { TimelineCard } from '../atoms/TimelineCard';
-import PieCard from '../atoms/PieCard';
-import InfoCard from '../atoms/InfoCard';
-import uuid from 'react-uuid'
+import { TimelineCard } from './components/atoms/TimelineCard';
+import PieCard from './components/atoms/PieCard';
+import InfoCard from './components/atoms/InfoCard';
 
-const AreaMultiplesPaises = ()=>{
+const TimelineSelect = ()=>{
 
     const [paisSeleccionado, setPaisSeleccionado] = useState({
         updated: 0,
@@ -66,16 +65,7 @@ const AreaMultiplesPaises = ()=>{
     
                 setPaisSeleccionado({ ...res.data, alpha3Code: pais});
                 
-            }).catch(error => {
-                
-                if(error.response.status){
-                    alert("No existe datos para este pais");
-                }else{
-                    alert("Error");
-                }
-
             });
-
 
         }else{
             setPaisSeleccionado({
@@ -105,39 +95,35 @@ const AreaMultiplesPaises = ()=>{
 
     return (
         <>  
-            <Row my="md-3">
-              <Col col="md-12" text="center">
-                <h2>Seleccione el pais</h2>
-              </Col>
-            </Row>
-            <Row my="md-3">
+            <Row>
                 <Col>
+                    <h2>Seleccione el pais</h2>   
                     
                     <select defaultValue={'DEFAULT'}  className="form-control" id="exampleFormControlSelect2" onChange={(e) => { cambiandoPais(e) }}> 
                         <option value="DEFAULT" disabled>Seleccione</option>
                         {
                         paises.map( pais => (
-                            <option key={uuid()} value={pais.alpha3Code} >{pais.name}</option>  
+                            <option key= value={pais.alpha3Code} >{pais.name}</option>  
                         ))
                         }                        
                     </select>
                 </Col>
             </Row>
             <Row my="md-3">
-                <Col col="md-4">
+                <Col col="4 md">
                     <InfoCard
                     paisSeleccionado={paisSeleccionado}
                     ></InfoCard>
                 </Col>
                 
-                <Col col="md-8">
+                <Col col="8 md">
                     <PieCard
                         paisSeleccionado={paisSeleccionado} 
                     ></PieCard>
                 </Col>
             </Row>
-            <Row my="md-3">
-                <Col col="md-12">
+            <Row>
+                <Col col="12 md">
                     <TimelineCard
                         nombrePais={paisSeleccionado.country}
                         alpha3Code={paisSeleccionado.alpha3Code}
@@ -148,4 +134,4 @@ const AreaMultiplesPaises = ()=>{
     );
 }
 
-export default AreaMultiplesPaises;
+export default TimelineSelect;
