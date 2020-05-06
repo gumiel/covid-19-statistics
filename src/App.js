@@ -1,6 +1,13 @@
 import React from "react";
-import { Navbar, Nav, Button, Dropdown, Form, Collapse } from 'bootstrap-4-react';
+import { Navbar, Nav, Dropdown, Collapse } from 'bootstrap-4-react';
 import Estadisticas from "./components/pages/Estadisticas";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import ComparadorPaises from "./components/pages/ComparadorPaises";
 
 
 function App() {
@@ -9,40 +16,43 @@ function App() {
   
   return (
     <>
-      <Navbar expand="lg" light bg="light">
-        <Navbar.Brand href="#">Navbar</Navbar.Brand>
-        <Navbar.Toggler target="#navbarSupportedContent" />
-        <Collapse navbar id="navbarSupportedContent">
-          <Navbar.Nav mr="auto">
-            <Nav.Item active>
-              <Nav.Link href="#">Home</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="#">Link</Nav.Link>
-            </Nav.Item>
-            <Nav.Item dropdown>
-              <Nav.Link dropdownToggle>Dropdown</Nav.Link>
-              <Dropdown.Menu>
-                <Dropdown.Item>Action</Dropdown.Item>
-                <Dropdown.Item>Another action</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item>Something else</Dropdown.Item>
-              </Dropdown.Menu>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link disabled>Disabled</Nav.Link>
-            </Nav.Item>
-          </Navbar.Nav>
-          <Form inline my="2 lg-0">
-            <Form.Input type="search" placeholder="Search" mr="sm-2" />
-            <Button outline success my="2 sm-0">
-              Search
-            </Button>
-          </Form>
-        </Collapse>
-      </Navbar>
+      <Router>
+        <Navbar expand="lg" light bg="light">
+          <Navbar.Brand href="#"><b>ESTADISTICAS DEL COVID-19</b></Navbar.Brand>
+          <Navbar.Toggler target="#navbarSupportedContent" />
+          <Collapse navbar id="navbarSupportedContent">
+            <Navbar.Nav mr="auto">
+              <Nav.Item active>
+                  <Link to="/" className="nav-link">Inicio</Link>
+              </Nav.Item>
+              <Nav.Item>
+                  <Link to="/comparador" className="nav-link">Comparador</Link>
+              </Nav.Item>
+              <Nav.Item dropdown>
+                <Nav.Link dropdownToggle>Opciones</Nav.Link>
+                <Dropdown.Menu>
+                  <Dropdown.Item>Action</Dropdown.Item>
+                  <Dropdown.Item>Another action</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item>Something else</Dropdown.Item>
+                </Dropdown.Menu>
+              </Nav.Item>
 
-      <Estadisticas></Estadisticas>
+            </Navbar.Nav>
+
+          </Collapse>
+        </Navbar>
+
+        <Switch>
+          <Route exact path="/">
+            <Estadisticas></Estadisticas>
+          </Route>
+          <Route exact path="/comparador" component={ComparadorPaises}>
+            {/* <ComparadorPaises /> */}
+          </Route>
+        </Switch>
+
+      </Router>
     </>
   );
 }

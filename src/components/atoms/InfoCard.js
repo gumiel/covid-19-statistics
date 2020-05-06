@@ -10,7 +10,7 @@ const InfoCard = ({paisSeleccionado}) =>{
         <Card>
             <Card.Body>
                 <BH5>
-                    <img src={paisSeleccionado.countryInfo.flag} heigth="30" width="30" />
+                    <img src={paisSeleccionado.countryInfo.flag} heigth="30" width="30" alt=''/>
                     Datos actuales de {paisSeleccionado.country} 
                 </BH5>
                 <p>Fecha de actualizacion: <Moment format="DD/MM/YYYY">{paisSeleccionado.updated}</Moment></p>

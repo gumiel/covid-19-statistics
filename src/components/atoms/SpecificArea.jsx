@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Row, Col, Card, BH5, BH4} from 'bootstrap-4-react';
+import {Row, Col, Card, BH5} from 'bootstrap-4-react';
 import Axios from 'axios';
 import Chart from "chart.js";
 import Moment from "react-moment";
