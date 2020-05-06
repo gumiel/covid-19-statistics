@@ -5,6 +5,7 @@ import { TimelineCard } from '../atoms/TimelineCard';
 import PieCard from '../atoms/PieCard';
 import InfoCard from '../atoms/InfoCard';
 import uuid from 'react-uuid'
+// import { TimelineCardNew } from '../atoms/TimelineCardNew';
 
 const AreaMultiplesPaises = ()=>{
 
@@ -95,47 +96,51 @@ const AreaMultiplesPaises = ()=>{
 
 
     return (
-        <>  
-            <Row my="md-3">
-              <Col col="md-12" text="center">
-                <h2>Seleccione el pais</h2>
-              </Col>
-            </Row>
-            <Row my="md-3">
-                <Col>
-                    
-                    <select defaultValue={'DEFAULT'}  className="form-control" id="exampleFormControlSelect2" onChange={(e) => { cambiandoPais(e) }}> 
-                        <option value="DEFAULT" disabled>Seleccione</option>
-                        {
-                        paises.map( pais => (
-                            <option key={uuid()} value={pais.alpha3Code} >{pais.name}</option>  
-                        ))
-                        }                        
-                    </select>
-                </Col>
-            </Row>
-            <Row my="md-3">
-                <Col col="md-4">
-                    <InfoCard
-                    paisSeleccionado={paisSeleccionado}
-                    ></InfoCard>
-                </Col>
-                
-                <Col col="md-8">
-                    <PieCard
-                        paisSeleccionado={paisSeleccionado} 
-                    ></PieCard>
-                </Col>
-            </Row>
-            <Row my="md-3">
-                <Col col="md-12">
-                    <TimelineCard
-                        nombrePais={paisSeleccionado.country}
-                        alpha3Code={paisSeleccionado.alpha3Code}
-                    ></TimelineCard>
-                </Col>
-            </Row>
-        </>
+      <>
+        <Row my="md-3">
+          <Col col="md-12" text="center">
+            <h2>Seleccione el pais</h2>
+          </Col>
+        </Row>
+        <Row my="md-3">
+          <Col>
+            <select
+              defaultValue={"DEFAULT"}
+              className="form-control"
+              id="exampleFormControlSelect2"
+              onChange={(e) => {
+                cambiandoPais(e);
+              }}
+            >
+              <option value="DEFAULT" disabled>
+                Seleccione
+              </option>
+              {paises.map((pais) => (
+                <option key={uuid()} value={pais.alpha3Code}>
+                  {pais.name}
+                </option>
+              ))}
+            </select>
+          </Col>
+        </Row>
+        <Row my="md-3">
+          <Col col="md-4">
+            <InfoCard paisSeleccionado={paisSeleccionado}></InfoCard>
+          </Col>
+
+          <Col col="md-8">
+            <PieCard paisSeleccionado={paisSeleccionado}></PieCard>
+          </Col>
+        </Row>
+        <Row my="md-3">
+          <Col col="md-12">
+            <TimelineCard
+              nombrePais={paisSeleccionado.country}
+              alpha3Code={paisSeleccionado.alpha3Code}
+            ></TimelineCard>
+          </Col>
+        </Row>
+      </>
     );
 }
 
