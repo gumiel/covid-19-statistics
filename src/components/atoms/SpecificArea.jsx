@@ -47,7 +47,7 @@ const SpecificArea = function(){
       
 
 
-let ctx9 = document.getElementById("myChart231");
+      let ctx9 = document.getElementById("myChart231");
       
       new Chart(ctx9, {
         type: "horizontalBar",

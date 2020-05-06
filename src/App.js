@@ -47,6 +47,9 @@ function App() {
           <Route exact path="/">
             <Estadisticas></Estadisticas>
           </Route>
+          <Route exact path="/covid-19-statistics">
+            <Estadisticas></Estadisticas>
+          </Route>
           <Route exact path="/comparador" component={ComparadorPaises}>
             {/* <ComparadorPaises /> */}
           </Route>
