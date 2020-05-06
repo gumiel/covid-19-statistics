@@ -37,7 +37,7 @@ const PieCard = function({paisSeleccionado}){
             }
         };  
           
-        let chart1 = new Chart(ctx1, config1);
+        new Chart(ctx1, config1);
           
 
     });
