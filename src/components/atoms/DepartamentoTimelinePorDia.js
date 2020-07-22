@@ -17,21 +17,25 @@ const DepartamentoTimelinePorDia = ({dataCocha}) => {
       let arrayD = d.fecha.split("-");
       return arrayD[2] + "/" + arrayD[1] + "/" + arrayD[0];
     }).reverse();
+    arregloFechaCasos.shift();
 
     let arregloDatosCasos = [];
     arregloDatosCasos = porDia(dataCocha.map(function (d) {
       return d.activos;
     })).reverse();
+    arregloDatosCasos.pop(); // elimina el ultimo registro que es 0
 
     let arregloDatosMuertes = [];
     arregloDatosMuertes = porDia(dataCocha.map(function (d) {
       return d.decesos;
     })).reverse();
+    arregloDatosMuertes.pop(); // elimina el ultimo registro que es 0
 
     let arregloDatosRecuperaciones = [];
     arregloDatosRecuperaciones = porDia(dataCocha.map(function (d) {
       return d.recuperados;
     })).reverse();
+    arregloDatosRecuperaciones.pop(); // elimina el ultimo registro que es 0
 
 
     console.log(arregloFechaCasos.length);

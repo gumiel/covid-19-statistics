@@ -28,7 +28,7 @@ const AreaDepartamento = ()=>{
           console.log(res.data[0]);
           let nuevo = []
           nuevo = res.data.filter(function(d){
-              return d.validado == true
+              return d.validado === true
           });
           setCocha(nuevo);
           setCochaUltimaFecha(nuevo[0]);
