@@ -83,11 +83,6 @@ export const TimelineCard = ({ nombrePais, alpha3Code}) => {
             let ctx = document.getElementById("myChart5");
             setChart(new Chart(ctx, config));
           })
-          .cath(
-            (error) => {
-              console.log("error");
-            }
-          );
       } 
     }, [nombrePais, alpha3Code]);
 
