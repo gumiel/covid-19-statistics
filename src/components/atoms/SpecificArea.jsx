@@ -3,16 +3,17 @@ import {Row, Col, Card, BH5} from 'bootstrap-4-react';
 import Axios from 'axios';
 import Chart from "chart.js";
 import Moment from "react-moment";
+import InfoCard from './InfoCard';
+
+
+
+
 
 
 const SpecificArea = function(){
 
   
 
-
-  // const [dataBarra, setDataBarra] = useState({
-  //   chartRef2 : React.createRef()
-  // });
 
   const [myData, setMyData] = useState({
     "updated": 1587044800696,
@@ -45,8 +46,8 @@ const SpecificArea = function(){
       
       
 
-      // const myChartRef2 = dataBarra.chartRef2.current.getContext("2d");
-let ctx9 = document.getElementById("myChart231");
+
+      let ctx9 = document.getElementById("myChart231");
       
       new Chart(ctx9, {
         type: "horizontalBar",
@@ -88,28 +89,22 @@ let ctx9 = document.getElementById("myChart231");
         <Row my="md-3">
           
           <Col col="md-8">
+            
             <Card>
               <Card.Body>
-                <BH5>Cuadro de la fecha <Moment format="DD/MM/YYYY">{myData.updated}</Moment> </BH5>
-                {/* <canvas id="myChart231" ref={dataBarra.chartRef2} /> */}
-                <canvas id="myChart231"  />
+                  <BH5>Cuadro de la fecha <Moment format="DD/MM/YYYY">{myData.updated}</Moment> </BH5>
+                  <canvas id="myChart231" />
               </Card.Body>
             </Card>
 
           </Col>
+
           <Col col="md-4">
-          <Card>
-            <Card.Body>
-                <p>Casos a nivel nacional: <b>{myData.cases}</b></p>
-                <p>Total de recuperados: <b>{myData.recovered}</b></p>
-                <p>Total de fallecidos: <b>{myData.deaths}</b></p>
-                <p>Casos del dia de hoy: {myData.todayCases}</p>
-                <p>Total de casos activos: {myData.active}</p>
-                <p>Casos criticos: {myData.critical}</p>
-            </Card.Body>
-          </Card>
-            
+            <InfoCard
+              paisSeleccionado={myData}
+            />
           </Col>
+
         </Row>
       </>
   );

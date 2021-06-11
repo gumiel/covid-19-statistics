@@ -67,7 +67,16 @@ const AreaMultiplesPaises = ()=>{
     
                 setPaisSeleccionado({ ...res.data, alpha3Code: pais});
                 
+            }).catch(error => {
+                
+                if(error.response.status){
+                    alert("No existe datos para este pais");
+                }else{
+                    alert("Error");
+                }
+
             });
+
 
         }else{
             setPaisSeleccionado({

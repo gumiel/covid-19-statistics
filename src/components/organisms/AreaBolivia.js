@@ -8,6 +8,7 @@ const AreaBolivia = ()=>{
         <>
             <SpecificArea></SpecificArea>
             <Timeline></Timeline>
+
         </>
     );
 }
